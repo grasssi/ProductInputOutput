@@ -1,17 +1,17 @@
-<table id="dataTable" class="table table-hover table-striped">
-  <thead>
+<table id="dataTable" class="table table-hover table-striped "  >
+  <thead >
     <tr>
-      <th>Index</th>
-      <th>Name</th>
-      <th>Descripe </th>
-      <th>Action</th>
+      <th scope="col">Index</th>
+      <th scope="col">Name</th>
+      <th scope="col">Descripe </th>
+      <th scope="col">Action</th>
       </tr>
   </thead>
   <tbody>
     <tr *ngFor="let prod of listProductChild ,let i=index ">
-      <td>{{i+1}}</td>
-      <td>{{prod.name}}</td>
-      <td>{{prod.describe}}</td>
+      <td scope="row">{{i+1}}</td>
+      <td  scope="row">{{prod.name}}</td>
+      <td  scope="row">{{prod.describe}}</td>
       <td>
         <button  class="btn btn-info" (click)="onUpdate(i)">Update</button>
         <button  class="btn btn-danger" (click)="onDelete(i)">Suprimer</button>

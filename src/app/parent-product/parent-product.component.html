@@ -1,18 +1,28 @@
-<form [formGroup]="productForm" (ngSubmit)="addProduct()">
-  <div>
-    <label>Nom de produit</label>
-    <input type="text" formControlName="name">
+<form [formGroup]="productForm" (ngSubmit)="addProduct()" class="offset-2 col-8" style="color: #757575;">
+  <div class="form-group">
+    <div>
+      <label>Nom de produit</label>
+      <input type="text" formControlName="name" placeholder="Taper Nom de produit Plz" class="form-control"
+        [ngClass]="{'is-valid': submitted && !productForm.controls.name.errors ,'is-invalid': submitted && productForm.controls.name.errors}">
+      <div class="invalid-feedback d-block" *ngIf="submitted && productForm.controls.name.hasError('required')">Vérifiez
+        votre saisie</div>
+    </div>
+    <div>
+      <label>Discription de produit</label>
+      <input type="text" formControlName="describe" placeholder="Taper Discription de produit Plz" class="form-control"
+        [ngClass]="{'is-valid': submitted && !productForm.controls.describe.errors ,'is-invalid': submitted && productForm.controls.describe.errors}">
+      <div class="invalid-feedback d-block" *ngIf="submitted && productForm.controls.describe.hasError('required')">
+        Vérifiez
+        votre saisie</div>
+    </div>
   </div>
-  <div>
-    <label>Discription de produit</label>
-    <input type="text" formControlName="describe">
 
-  </div>
   <div>
-    <button type="submit" *ngIf="!showUpdateButton" >Add</button>
-    <button type="button" (click)="saveUpdate()" *ngIf="showUpdateButton" >Update</button>
-    <button type="button" (click)="resetForm()">Reset</button>
+    <button class="btn btn-danger" type="submit" *ngIf="!showUpdateButton">Add</button>
+    <button class="btn btn-success" type="button" (click)="saveUpdate()" *ngIf="showUpdateButton">Update</button>
+    <button class="btn btn-info" type="button" (click)="resetForm()">Reset</button>
   </div>
 </form>
 <br><br>
-<app-child-product [listProductChild]="listProduct" (updateProd)="updateProd($event)" (deleteProd)="deleteProd($event)"></app-child-product>
+<app-child-product [listProductChild]="listProduct" (updateProd)="updateProd($event)" (deleteProd)="deleteProd($event)">
+</app-child-product>
