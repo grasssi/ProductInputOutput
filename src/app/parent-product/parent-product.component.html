@@ -1,0 +1,18 @@
+<form [formGroup]="productForm" (ngSubmit)="addProduct()">
+  <div>
+    <label>Nom de produit</label>
+    <input type="text" formControlName="name">
+  </div>
+  <div>
+    <label>Discription de produit</label>
+    <input type="text" formControlName="describe">
+
+  </div>
+  <div>
+    <button type="submit" *ngIf="!showUpdateButton" >Add</button>
+    <button type="button" (click)="saveUpdate()" *ngIf="showUpdateButton" >Update</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+  </div>
+</form>
+<br><br>
+<app-child-product [listProductChild]="listProduct" (updateProd)="updateProd($event)" (deleteProd)="deleteProd($event)"></app-child-product>
